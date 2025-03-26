@@ -1,0 +1,8 @@
+streamlit
+pymongo
+matplotlib
+pandas
+
+# 설치는 한 번에 이렇게:
+```bash
+pip install -r requirements.txt
