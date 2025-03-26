@@ -23,7 +23,8 @@ epochs = db["epochs"]
 st.title("💭 Model-tracker Dashboard")
 
 # --- 메뉴 선택 ---
-menu = st.sidebar.radio("📌 메뉴 선택", ["모델 상세 보기", "모델 비교 보기", "시간 필터"])
+menu = st.sidebar.radio("📌 메뉴 선택", ["모델 상세 보기", "모델 비교 보기", "시간 필터", "학습 상태 실시간 모니터링"])
+
 
 if menu == "모델 상세 보기":
     run_ids = [doc["run_id"] for doc in trainings.find({}, {"run_id": 1})]
@@ -241,3 +242,38 @@ elif menu == "시간 필터":
     # --- 원본 에폭 데이터
     with st.expander("📄 원본 에폭 데이터 보기"):
         st.dataframe(df)
+elif menu == "학습 상태 실시간 모니터링":
+    st.title("📡 모델 학습 상태 실시간 모니터링")
+
+    status_collection = db["status"]
+    status_docs = list(status_collection.find())
+
+    if not status_docs:
+        st.info("📭 현재 상태 정보가 없습니다.")
+        st.stop()
+
+    for doc in status_docs:
+        st.subheader(f"🧪 Run ID: `{doc['run_id']}`")
+        st.markdown(f"- **Status:** `{doc['status']}`")
+        st.markdown(f"- **Start Time:** `{doc.get('start_time', 'N/A')}`")
+        if doc["status"] == "completed":
+            st.markdown(f"- **End Time:** `{doc.get('end_time', 'N/A')}`")
+            st.success("✅ 학습 완료!")
+        elif doc["status"] == "in_progress":
+            st.info("🌀 학습 진행 중...")
+
+            # 진행률 표시
+            # 현재 epoch 수 가져오기
+            current_epoch = epochs.count_documents({"run_id": doc["run_id"]})
+            total_epoch = trainings.find_one({"run_id": doc["run_id"]})["epochs_run"] if trainings.find_one({"run_id": doc["run_id"]}) else 100
+            st.markdown(f"**진행률:** {current_epoch} / {total_epoch} epochs")
+
+            progress = min(int(current_epoch / total_epoch * 100), 100)
+            st.progress(progress)
+
+            # 실시간 갱신 유도
+            st.caption("⏳ 새로고침하면 최신 상태가 반영됩니다.")
+            st.button("🔄 새로고침", on_click=st.rerun)
+
+        elif doc["status"] == "failed":
+            st.error("❌ 학습 실패")
