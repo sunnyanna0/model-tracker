@@ -17,7 +17,7 @@ db = client["model_logs_db"]
 trainings = db["trainings"]
 epochs = db["epochs"]
 
-st.title("🧠 모델 학습 로그 대시보드")
+st.title("💭 Model-tracker Dashboard")
 
 # --- 메뉴 선택 ---
 menu = st.sidebar.radio("📌 메뉴 선택", ["모델 상세 보기", "📊 모델 비교 보기"])
