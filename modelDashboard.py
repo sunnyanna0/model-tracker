@@ -49,39 +49,39 @@ if menu == "모델 상세 보기":
     st.markdown(f"**학습 소요 시간:** `{run_info['duration_minutes']:.2f}분`")
     st.markdown(f"**시작:** `{run_info['start_time']}`\n**종료:** `{run_info['end_time']}`")
 
-    st.subheader("📈 Epoch별 추이 시각화")
-    epoch_logs = list(epochs.find({"run_id": selected_run}).sort("epoch", 1))
-    df = pd.DataFrame(epoch_logs)
+    # st.subheader("📈 Epoch별 추이 시각화")
+    # epoch_logs = list(epochs.find({"run_id": selected_run}).sort("epoch", 1))
+    # df = pd.DataFrame(epoch_logs)
 
-    fig1, ax1 = plt.subplots()
-    ax1.plot(df["epoch"], df["train_acc"], label="Train Accuracy", color="blue")
-    ax1.plot(df["epoch"], df["val_acc"], label="Val Accuracy", color="orange")
-    ax1.set_title("Train vs Validation Accuracy")
-    ax1.set_xlabel("Epoch")
-    ax1.set_ylabel("Accuracy")
-    ax1.legend()
-    st.pyplot(fig1)
+    # fig1, ax1 = plt.subplots()
+    # ax1.plot(df["epoch"], df["train_acc"], label="Train Accuracy", color="blue")
+    # ax1.plot(df["epoch"], df["val_acc"], label="Val Accuracy", color="orange")
+    # ax1.set_title("Train vs Validation Accuracy")
+    # ax1.set_xlabel("Epoch")
+    # ax1.set_ylabel("Accuracy")
+    # ax1.legend()
+    # st.pyplot(fig1)
 
-    fig2, ax2 = plt.subplots()
-    ax2.plot(df["epoch"], df["train_loss"], label="Train Loss", color="blue")
-    ax2.plot(df["epoch"], df["val_loss"], label="Val Loss", color="orange")
-    ax2.set_title("Train vs Validation Loss")
-    ax2.set_xlabel("Epoch")
-    ax2.set_ylabel("Loss")
-    ax2.legend()
-    st.pyplot(fig2)
+    # fig2, ax2 = plt.subplots()
+    # ax2.plot(df["epoch"], df["train_loss"], label="Train Loss", color="blue")
+    # ax2.plot(df["epoch"], df["val_loss"], label="Val Loss", color="orange")
+    # ax2.set_title("Train vs Validation Loss")
+    # ax2.set_xlabel("Epoch")
+    # ax2.set_ylabel("Loss")
+    # ax2.legend()
+    # st.pyplot(fig2)
 
-    if "epoch_time_sec" in df.columns:
-        st.subheader("⏱️ 에폭별 소요 시간")
-        fig3, ax3 = plt.subplots()
-        ax3.plot(df["epoch"], df["epoch_time_sec"], color="green")
-        ax3.set_title("Epoch Time")
-        ax3.set_xlabel("Epoch")
-        ax3.set_ylabel("Time (sec)")
-        st.pyplot(fig3)
+    # if "epoch_time_sec" in df.columns:
+    #     st.subheader("⏱️ 에폭별 소요 시간")
+    #     fig3, ax3 = plt.subplots()
+    #     ax3.plot(df["epoch"], df["epoch_time_sec"], color="green")
+    #     ax3.set_title("Epoch Time")
+    #     ax3.set_xlabel("Epoch")
+    #     ax3.set_ylabel("Time (sec)")
+    #     st.pyplot(fig3)
 
-    with st.expander("📄 원본 에폭 데이터 보기"):
-        st.dataframe(df)
+    # with st.expander("📄 원본 에폭 데이터 보기"):
+    #     st.dataframe(df)
 
 elif menu == "모델 비교 보기":
     st.subheader("📊 전체 모델 성능 비교")
@@ -209,39 +209,39 @@ elif menu == "시간 필터":
     st.markdown(f"**총 학습 시간:** `{run_info['duration_minutes']:.2f}분`")
 
     # --- 에폭별 시각화
-    epoch_logs = list(epochs.find({"run_id": selected_run}).sort("epoch", 1))
-    df = pd.DataFrame(epoch_logs)
+    # epoch_logs = list(epochs.find({"run_id": selected_run}).sort("epoch", 1))
+    # df = pd.DataFrame(epoch_logs)
 
-    st.subheader("📈 Epoch별 추이")
-    fig1, ax1 = plt.subplots()
-    ax1.plot(df["epoch"], df["train_acc"], label="Train Acc", color="skyblue")
-    ax1.plot(df["epoch"], df["val_acc"], label="Val Acc", color="orange")
-    ax1.set_title("Accuracy")
-    ax1.set_xlabel("Epoch")
-    ax1.set_ylabel("Accuracy")
-    ax1.legend()
-    st.pyplot(fig1)
+    # st.subheader("📈 Epoch별 추이")
+    # fig1, ax1 = plt.subplots()
+    # ax1.plot(df["epoch"], df["train_acc"], label="Train Acc", color="skyblue")
+    # ax1.plot(df["epoch"], df["val_acc"], label="Val Acc", color="orange")
+    # ax1.set_title("Accuracy")
+    # ax1.set_xlabel("Epoch")
+    # ax1.set_ylabel("Accuracy")
+    # ax1.legend()
+    # st.pyplot(fig1)
 
-    fig2, ax2 = plt.subplots()
-    ax2.plot(df["epoch"], df["train_loss"], label="Train Loss", color="skyblue")
-    ax2.plot(df["epoch"], df["val_loss"], label="Val Loss", color="orange")
-    ax2.set_title("Loss")
-    ax2.set_xlabel("Epoch")
-    ax2.set_ylabel("Loss")
-    ax2.legend()
-    st.pyplot(fig2)
+    # fig2, ax2 = plt.subplots()
+    # ax2.plot(df["epoch"], df["train_loss"], label="Train Loss", color="skyblue")
+    # ax2.plot(df["epoch"], df["val_loss"], label="Val Loss", color="orange")
+    # ax2.set_title("Loss")
+    # ax2.set_xlabel("Epoch")
+    # ax2.set_ylabel("Loss")
+    # ax2.legend()
+    # st.pyplot(fig2)
 
-    if "epoch_time_sec" in df.columns:
-        fig3, ax3 = plt.subplots()
-        ax3.plot(df["epoch"], df["epoch_time_sec"], color="green")
-        ax3.set_title("Epoch Time per Epoch")
-        ax3.set_xlabel("Epoch")
-        ax3.set_ylabel("Seconds")
-        st.pyplot(fig3)
+    # if "epoch_time_sec" in df.columns:
+    #     fig3, ax3 = plt.subplots()
+    #     ax3.plot(df["epoch"], df["epoch_time_sec"], color="green")
+    #     ax3.set_title("Epoch Time per Epoch")
+    #     ax3.set_xlabel("Epoch")
+    #     ax3.set_ylabel("Seconds")
+    #     st.pyplot(fig3)
 
-    # --- 원본 에폭 데이터
-    with st.expander("📄 원본 에폭 데이터 보기"):
-        st.dataframe(df)
+    # # --- 원본 에폭 데이터
+    # with st.expander("📄 원본 에폭 데이터 보기"):
+    #     st.dataframe(df)
 elif menu == "학습 상태 실시간 모니터링":
     st.title("📡 모델 학습 상태 실시간 모니터링")
 
@@ -265,7 +265,9 @@ elif menu == "학습 상태 실시간 모니터링":
             # 진행률 표시
             # 현재 epoch 수 가져오기
             current_epoch = epochs.count_documents({"run_id": doc["run_id"]})
-            total_epoch = trainings.find_one({"run_id": doc["run_id"]})["epochs_run"] if trainings.find_one({"run_id": doc["run_id"]}) else 100
+            # total_epoch = trainings.find_one({"run_id": doc["run_id"]})["epochs_run"] if trainings.find_one({"run_id": doc["run_id"]}) else 100
+            total_epoch = 100
+
             st.markdown(f"**진행률:** {current_epoch} / {total_epoch} epochs")
 
             progress = min(int(current_epoch / total_epoch * 100), 100)
