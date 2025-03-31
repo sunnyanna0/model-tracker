@@ -3,8 +3,8 @@
 > Transfer Learning 기반 쌀 잎 질병 분류 모델 성능 비교 및 실시간 모니터링 시스템 구축 프로젝트
 > 
 > 
-> ✅ [실시간 모델 추적 대시보드 바로가기](https://model-tracker-bsmknozj45d9xndtbbeb4h.streamlit.app/#bd9568c6) 
-> 
+> ✅ [실시간 모델 추적 대시보드 바로가기](https://model-tracker-bsmknozj45d9xndtbbeb4h.streamlit.app/#bd9568c6)  
+>  
 
 ---
 
