@@ -12,9 +12,16 @@
 
 본 프로젝트는 **쌀 잎에 발생하는 질병(Bacterial Blight, Brown Spot, Leaf Smut)**을 분류하기 위해 다양한 전이 학습 기반 CNN 모델을 실험하고, 학습 전 과정을 추적 및 시각화하는 시스템을 구축한 연구입니다.
 
+<img width="595" alt="image" src="https://github.com/user-attachments/assets/314fad1d-cae4-4293-b976-f24f1e13b355" />
+
 - 사용 모델: `Custom CNN`, `ResNet50`, `VGG16`, `MobileNetV2`
 - 성능 추적: `MongoDB + Streamlit 대시보드`
 - 기술 스택: `PyTorch`, `MongoDB`, `Streamlit`, `Google Colab`
+
+<img width="603" alt="image" src="https://github.com/user-attachments/assets/cc4c0846-6208-42d5-96c5-573f29df4831" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/5a3b59d6-4e14-46b3-917d-d9441d65566f" />
+<img width="599" alt="image" src="https://github.com/user-attachments/assets/eecf9725-18d3-4b59-89be-9c97c8482b9e" />
+
 
 ---
 
@@ -58,7 +65,7 @@
 ## 🗃 사용 데이터셋
 
 - **📂 Kaggle: Rice Plant Diseases Dataset**
-    
+
     [🔗 바로가기](https://www.kaggle.com/datasets/jay7080dev/rice-plant-diseases-dataset)
     
     - 총 4,684장 RGB 이미지 (224x224 리사이즈)
